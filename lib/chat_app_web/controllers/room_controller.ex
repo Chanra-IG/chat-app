@@ -13,6 +13,11 @@ defmodule ChatAppWeb.RoomController do
     render(conn, "index.html", rooms: rooms)
   end
 
+  def list(conn, _params) do
+    rooms = Talk.list_rooms()
+    json(conn, rooms: rooms)
+  end
+
   def new(conn, _params) do
     changeset = Room.changeset(%Room{}, %{})
     render(conn, "new.html", changeset: changeset)

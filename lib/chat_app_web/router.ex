@@ -25,7 +25,9 @@ defmodule ChatAppWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ChatAppWeb do
-  #   pipe_through :api
-  # end
+  scope "/api/v1/", ChatAppWeb do
+    pipe_through :api
+
+    get "/rooms", RoomController, :list
+  end
 end
