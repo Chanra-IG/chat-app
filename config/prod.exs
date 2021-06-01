@@ -13,7 +13,8 @@ config :chat_app, ChatAppWeb.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "murmuring-tundra-74404.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  check_origin: ["*"]
 
 # Do not print debug messages in production
 config :logger, level: :info
