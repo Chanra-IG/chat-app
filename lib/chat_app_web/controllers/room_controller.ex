@@ -15,7 +15,7 @@ defmodule ChatAppWeb.RoomController do
 
   def list(conn, _params) do
     rooms = Talk.list_rooms()
-    json(conn, rooms: rooms)
+    json(conn, %{"rooms" => rooms})
   end
 
   def new(conn, _params) do
