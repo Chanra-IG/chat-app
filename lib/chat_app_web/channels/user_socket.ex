@@ -26,6 +26,10 @@ defmodule ChatAppWeb.UserSocket do
     end
   end
 
+  def connect(_params, socket, _connection_info) do
+    {:ok, socket}
+  end
+
   def connect(_params, _socket, _connect_info) do
     :error
   end
