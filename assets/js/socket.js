@@ -18,12 +18,13 @@ let socket = new Socket("/socket", {
 })
 
 let roomId = window.roomId
-let presences = {}
-
-
-socket.connect()
 
 if (roomId) {
+  
+  let presences = {}
+  
+  socket.connect()
+
   const timeout = 3000
   var typingTimer
   let userTyping = false
