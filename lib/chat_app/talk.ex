@@ -3,7 +3,7 @@ defmodule ChatApp.Talk do
   alias ChatApp.Talk.Room
   alias ChatApp.Talk.Message
 
-  import Ecto.Query
+  import Ecto.Query, warn: false
 
   def create_message(user, room, attrs \\ %{}) do
     user

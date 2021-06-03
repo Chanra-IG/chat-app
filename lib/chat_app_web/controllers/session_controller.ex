@@ -27,4 +27,9 @@ defmodule ChatAppWeb.SessionController do
     |> Accounts.sign_out()
     |> redirect(to: Routes.room_path(conn, :index))
   end
+
+  def get_token(conn, %{"id" => id}) do
+    token = Phoenix.Token.sign(conn, "user token", id)
+    json conn, %{token: token}
+  end
 end

@@ -5,7 +5,7 @@ defmodule ChatAppWeb.RoomController do
   alias ChatApp.Talk
   alias ChatAppWeb.Plugs.AuthUser
 
-  plug AuthUser when action not in [:index]
+  plug AuthUser when action not in [:index, :list, :get_token]
   plug :authorize_user when action in [:edit, :update, :delete]
 
   def index(conn, _params) do
@@ -15,7 +15,7 @@ defmodule ChatAppWeb.RoomController do
 
   def list(conn, _params) do
     rooms = Talk.list_rooms()
-    json(conn, %{"rooms" => rooms})
+    render(conn, "list.json", rooms: rooms)
   end
 
   def new(conn, _params) do

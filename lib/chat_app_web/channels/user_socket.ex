@@ -27,7 +27,7 @@ defmodule ChatAppWeb.UserSocket do
   end
 
   def connect(_params, socket, _connection_info) do
-    {:ok, socket}
+    {:ok, assign(socket, :current_user_id, 1)}
   end
 
   def connect(_params, _socket, _connect_info) do

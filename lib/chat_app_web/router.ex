@@ -29,5 +29,6 @@ defmodule ChatAppWeb.Router do
     pipe_through :api
 
     get "/rooms", RoomController, :list
+    get "/get_token/:id", SessionController, :get_token
   end
 end
