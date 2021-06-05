@@ -30,5 +30,6 @@ defmodule ChatAppWeb.Router do
 
     get "/rooms", RoomController, :list
     get "/get_token/:id", SessionController, :get_token
+    post "/login", SessionController, :login
   end
 end

@@ -22,6 +22,22 @@ defmodule ChatAppWeb.SessionController do
     end
   end
 
+  def login(conn, %{"email" => email, "password" => password}) do
+    case Accounts.sign_in(email, password) do
+      {:ok, user} ->
+        token = Phoenix.Token.sign(conn, "user token", user.id)
+        conn
+        |> put_status(:ok)
+        |> put_view(ChatAppWeb.SessionView)
+        |> render("login.json", %{user: user, token: token})
+      {:error, _} ->
+        conn
+        |> put_status(:unauthorized)
+        |> put_view(ChatAppWeb.ErrorView)
+        |> render("401.json", message: "Invalid Email or Password")
+    end
+  end
+
   def delete(conn, _) do
     conn
     |> Accounts.sign_out()
