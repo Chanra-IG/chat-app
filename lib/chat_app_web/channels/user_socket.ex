@@ -19,11 +19,12 @@ defmodule ChatAppWeb.UserSocket do
   def connect(%{"token" => token}, socket, _connection_info) do
     case Phoenix.Token.verify(socket, "user token", token, max_age: @max_age) do
       {:ok, user_id} ->
-        IO.puts("=========== connect =============")
+        IO.puts("=========== connect success =============")
         IO.inspect(user_id)
         {:ok, assign(socket, :current_user_id, user_id)}
 
       {:error, _} ->
+        IO.puts("=========== connect failed =============")
         :error
     end
   end
